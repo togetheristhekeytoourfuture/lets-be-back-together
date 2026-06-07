@@ -39,15 +39,31 @@ const yesBtn = document.getElementById('yes-btn')
 const noBtn = document.getElementById('no-btn')
 const music = document.getElementById('bg-music')
 
-console.log(music)            // Is it null? Means wrong ID
-console.log(music.src)        // Is the path correct?
-console.log(music.readyState) // Should be 4 if fully loaded, 0 means failed
-music.volume = 1.0
+// Autoplay: audio starts muted (bypasses browser policy), unmute immediately
+music.muted = true
+music.volume = 0.3
 music.play().then(() => {
-    console.log("Playing!")
-}).catch((err) => {
-    console.log("Failed:", err) // This will tell you exactly why
+    music.muted = false
+}).catch(() => {
+    // Fallback: unmute on first interaction
+    document.addEventListener('click', () => {
+        music.muted = false
+        music.play().catch(() => {})
+    }, { once: true })
 })
+
+function toggleMusic() {
+    if (musicPlaying) {
+        music.pause()
+        musicPlaying = false
+        document.getElementById('music-toggle').textContent = '🔇'
+    } else {
+        music.muted = false
+        music.play()
+        musicPlaying = true
+        document.getElementById('music-toggle').textContent = '🔊'
+    }
+}
 
 function handleYesClick() {
     if (!runawayEnabled) {
