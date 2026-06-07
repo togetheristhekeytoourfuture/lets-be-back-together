@@ -22,9 +22,9 @@ const noMessages = [
 ]
 
 const yesTeasePokes = [
-    "try saying no first... I bet you want to know what happens 😏",
+    "try saying no first?",
     "go on, hit no... just once 👀",
-    "you're missing out 😈",
+    "you're missing out something 😈",
     "click no, I dare you 😏"
 ]
 
@@ -41,7 +41,7 @@ const music = document.getElementById('bg-music')
 
 // Autoplay: audio starts muted (bypasses browser policy), unmute immediately
 music.muted = true
-music.volume = 0.3
+music.volume = 1.5
 music.play().then(() => {
     music.muted = false
 }).catch(() => {
