@@ -39,12 +39,14 @@ const yesBtn = document.getElementById('yes-btn')
 const noBtn = document.getElementById('no-btn')
 const music = document.getElementById('bg-music')
 
-music.muted = true        // Start muted to satisfy browser autoplay policy
-music.volume = 1.0        // Set desired volume (max is 1.0)
+console.log(music)            // Is it null? Means wrong ID
+console.log(music.src)        // Is the path correct?
+console.log(music.readyState) // Should be 4 if fully loaded, 0 means failed
+music.volume = 1.0
 music.play().then(() => {
-    music.muted = false   // Unmute once playback has started
+    console.log("Playing!")
 }).catch((err) => {
-    console.log("Autoplay blocked:", err)
+    console.log("Failed:", err) // This will tell you exactly why
 })
 
 function handleYesClick() {
