@@ -8,7 +8,6 @@ window.addEventListener('load', () => {
     music.volume = 1.5
     music.play().catch(() => {})
     musicPlaying = true
-    document.getElementById('music-toggle').textContent = '🔊'
 })
 
 function launchConfetti() {
