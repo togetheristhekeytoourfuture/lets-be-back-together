@@ -39,11 +39,12 @@ const yesBtn = document.getElementById('yes-btn')
 const noBtn = document.getElementById('no-btn')
 const music = document.getElementById('bg-music')
 
-// Autoplay: audio starts muted (bypasses browser policy), unmute immediately
-music.muted = false
-music.volume = 1.5
+music.muted = true        // Start muted to satisfy browser autoplay policy
+music.volume = 1.0        // Set desired volume (max is 1.0)
 music.play().then(() => {
-    music.muted = false
+    music.muted = false   // Unmute once playback has started
+}).catch((err) => {
+    console.log("Autoplay blocked:", err)
 })
 
 function handleYesClick() {
