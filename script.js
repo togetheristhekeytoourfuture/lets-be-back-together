@@ -52,19 +52,6 @@ music.play().then(() => {
     }, { once: true })
 })
 
-function toggleMusic() {
-    if (musicPlaying) {
-        music.pause()
-        musicPlaying = false
-        document.getElementById('music-toggle').textContent = '🔇'
-    } else {
-        music.muted = false
-        music.play()
-        musicPlaying = true
-        document.getElementById('music-toggle').textContent = '🔊'
-    }
-}
-
 function handleYesClick() {
     if (!runawayEnabled) {
         // Tease her to try No first
