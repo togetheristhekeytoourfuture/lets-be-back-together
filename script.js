@@ -41,7 +41,7 @@ const music = document.getElementById('bg-music')
 
 // Autoplay: audio starts muted (bypasses browser policy), unmute immediately
 music.muted = true
-music.volume = 0.3
+music.volume = 1.0
 music.play().then(() => {
     music.muted = false
 }).catch(() => {
